@@ -1,2 +1,31 @@
-<h1>Bookmarks#new</h1>
-<p>Find me in app/views/bookmarks/new.html.erb</p>
+<h1>New Bookmark</h1>
+
+<div class="row">
+  <div class="span-6">
+    <p>Guidelines for new bookmarks:</p>
+    <ul>
+      <li>Make sure content is appropriate and you include a hashtag.
+    </ul>
+  </div>
+  <div class="span-6">
+    <%= form_for @bookmark, html: { class: 'form-horizontal' } do |f| %>
+      <div class="control-group">
+        <%= f.label :title, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :title %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :burl, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :burl, rows: 8 %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Save", class: 'btn' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

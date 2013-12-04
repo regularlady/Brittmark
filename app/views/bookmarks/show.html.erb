@@ -1,2 +1,5 @@
 <h1><%= @bookmark.title %></h1>
-<p><%= @bookmark.burl %></p>
+
+<%= link_to "Edit", edit_post_path(@bookmark), class: 'btn btn-mini' %>
+
+<p><%= link_to @bookmark.burl %></p>
