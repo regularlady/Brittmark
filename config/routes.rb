@@ -1,9 +1,8 @@
 Brittmark::Application.routes.draw do
 
-  get "welcome/index"
+  resources :bookmarks
 
-  get "welcome/about"
+  match "about" => 'welcome#about', via: :get
 
-  root to: 'welcome#index'
-  
+  root :to => 'welcome#index'
 end
