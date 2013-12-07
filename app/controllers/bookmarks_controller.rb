@@ -10,6 +10,8 @@ class BookmarksController < ApplicationController
 
   def new
     @bookmark = Bookmark.new
+    authorize! :create, @bookmark, message: "You need to be a member to create a new bookmark."
+    if @bookmark.save
   end
 
   def create
@@ -26,12 +28,14 @@ end
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    authorize! :edit, @bookmark, message: "You need to own the post to edit it."
   end
 
   def update
     @bookmark = Bookmark.find(params[:id])
+    authorize! :update, @bookmark, message: "You need to own the post to edit it."
     if @bookmark.update_attributes(params[:post])
-      flash[:notice] = "Post was updated."
+      flash[:notice] = "Bookmark was updated."
       redirect_to @bookmark
     else
       flash[:error] = "There was an error saving the bookmark. Please try again."

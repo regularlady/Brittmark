@@ -1,4 +1,7 @@
 <h1>All Bookmarks</h1>
+<% if can? :create, Bookmark %>
+  <%= link_to "New Bookmark", new_bookmark_path, class: 'btn btn-primary btn-mini' %>
+<% end %>
 <% @bookmarks.each do |bookmark| %>
   <div class="media">
     <div class="media-body">
@@ -6,7 +9,7 @@
         <%= link_to bookmark.title, bookmark %>
       </h4>
       <small>
-        submitted <%= time_ago_in_words(bookmark.created_at) %> ago by <%= bookmark.user.name %><br/>
+        tagged <%= time_ago_in_words(bookmark.created_at) %> ago by <%= bookmark.user.name %><br/>
       </small>
     </div>
   </div>
