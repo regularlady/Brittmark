@@ -13,7 +13,7 @@ class BookmarksController < ApplicationController
   end
 
   def create
-  @bookmark = Bookmark.new(params[:bookmark])
+  @bookmark = current_user.bookmarks.build(params[:bookmark])
   
   if @bookmark.save
     flash[:notice] = "Bookmark was saved."

@@ -1,4 +1,6 @@
 class Bookmark < ActiveRecord::Base
   attr_accessible :burl, :title
-  has_many :bookmarks
+  belongs_to :user
+
+  default_scope order('created_at DESC')
 end

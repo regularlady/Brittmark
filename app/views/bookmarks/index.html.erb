@@ -5,6 +5,9 @@
       <h4 class="media-heading">
         <%= link_to bookmark.title, bookmark %>
       </h4>
+      <small>
+        submitted <%= time_ago_in_words(bookmark.created_at) %> ago by <%= bookmark.user.name %><br/>
+      </small>
     </div>
   </div>
 <% end %>
