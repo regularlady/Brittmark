@@ -32,6 +32,7 @@ gem 'jquery-rails'
 gem 'faker'
 gem 'devise'
 gem 'cancan'
+gem 'acts-as-taggable-on'
 
 
 # To use ActiveModel has_secure_password
