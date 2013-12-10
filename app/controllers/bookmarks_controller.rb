@@ -16,7 +16,6 @@ class BookmarksController < ApplicationController
   def new
     @bookmark = Bookmark.new
     authorize! :create, @bookmark, message: "You need to be a member to create a new bookmark."
-    if @bookmark.save
   end
 
   def create

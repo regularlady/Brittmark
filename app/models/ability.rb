@@ -7,7 +7,7 @@ class Ability
     # if a member, they can manage their own posts 
     # (or create new ones)
     if user.role? :member
-      can :manage, Bookmark, :user_id => user.id
+      can :manage, Bookmark
     end
 
     # Moderators can delete any post
