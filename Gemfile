@@ -28,7 +28,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'will_paginate', '~> 3.0'
 gem 'faker'
 gem 'devise'
 gem 'cancan'

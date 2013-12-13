@@ -1,0 +1,2 @@
+module UserBookmarksHelper
+end

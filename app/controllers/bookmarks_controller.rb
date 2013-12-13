@@ -32,13 +32,13 @@ end
 
   def edit
     @bookmark = Bookmark.find(params[:id])
-    authorize! :edit, @bookmark, message: "You need to own the post to edit it."
+    authorize! :edit, @bookmark, message: "You need to own the bookmark to edit it."
   end
 
   def update
     @bookmark = Bookmark.find(params[:id])
-    authorize! :update, @bookmark, message: "You need to own the post to edit it."
-    if @bookmark.update_attributes(params[:post])
+    authorize! :update, @bookmark, message: "You need to own the bookmark to edit it."
+    if @bookmark.update_attributes(params[:bookmark])
       flash[:notice] = "Bookmark was updated."
       redirect_to @bookmark
     else
@@ -46,4 +46,13 @@ end
       render :edit
     end
   end
+
+  def mybookmarks 
+    if params[:tag]
+      @bookmarks = current_user.bookmarks.tagged_with(params[:tag])
+    else
+      @bookmarks = current_user.bookmarks
+    end  
+  end
+
 end
