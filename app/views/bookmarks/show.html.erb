@@ -1,7 +1,10 @@
 <h1><%= @bookmark.title %></h1>
 
-<% if can? :edit, @bookmark %>
-  <%= link_to "Edit", edit_bookmark_path(@bookmark), class: 'btn btn-mini' %>
-<% end %>
+  <% if can? :create, Bookmark %>
+      <%= link_to "New Bookmark", new_bookmark_post_path(@bookmark), class: 'btn btn-large btn-block' %>
+    <% end %>
+    <% if can? :destroy, @bookmark %>
+      <%= link_to "Delete Bookmark", @bookmark, method: :delete, class: 'btn btn-large btn-block btn-danger', confirm: 'Are you sure you want to delete this bookmark?' %>
+    <% end %> 
 
 <p><%= @bookmark.burl %></p>

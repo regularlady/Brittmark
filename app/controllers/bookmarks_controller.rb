@@ -1,5 +1,7 @@
 class BookmarksController < ApplicationController
 
+require 'will_paginate/array'
+
   def index
     if params[:tag]
       @bookmarks = Bookmark.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
@@ -59,6 +61,7 @@ end
   def destroy
     @bookmark = Bookmark.find(params[:id])
     name = @bookmark.name
+     authorize! :destroy, @bookmark, message: "You need to own the bookmark to delete it."
     if @bookmark.destroy
       flash[:notice] = "\"#{name}\" was deleted successfully."
       redirect_to bookmarks_path
