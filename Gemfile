@@ -33,6 +33,7 @@ gem 'faker'
 gem 'devise'
 gem 'cancan'
 gem 'acts-as-taggable-on'
+gem 'will_paginate', '~> 3.0'
 gem 'omniauth-facebook'
 
 # To use ActiveModel has_secure_password

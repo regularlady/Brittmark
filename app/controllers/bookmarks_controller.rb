@@ -2,9 +2,9 @@ class BookmarksController < ApplicationController
 
   def index
     if params[:tag]
-      @bookmarks = Bookmark.tagged_with(params[:tag])
+      @bookmarks = Bookmark.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
     else
-      @bookmarks = Bookmark.all
+      @bookmarks = Bookmark.all.paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -56,4 +56,15 @@ end
     end  
   end
 
+  def destroy
+    @bookmark = Bookmark.find(params[:id])
+    name = @bookmark.name
+    if @bookmark.destroy
+      flash[:notice] = "\"#{name}\" was deleted successfully."
+      redirect_to bookmarks_path
+    else
+      flash[:error] = "There was an error deleting the bookmark."
+      render :show
+    end
+  end
 end

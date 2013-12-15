@@ -7,5 +7,5 @@ class Bookmark < ActiveRecord::Base
   default_scope order('created_at DESC')
 
   validates :title, length: { minimum: 5 }, presence: true
-  validates :burl, length: { minimum: 6 }, presence: true
+  validates :burl, length: { maximum: 100 }, length: { minimum: 10 }, presence: true
 end
