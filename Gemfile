@@ -33,7 +33,7 @@ gem 'faker'
 gem 'devise'
 gem 'cancan'
 gem 'acts-as-taggable-on'
-
+gem 'omniauth-facebook'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -8,10 +8,17 @@
   </head>
   <body>
     <div class="container">
+      <% if current_user %>
       <ul class="nav nav-tabs">
         <li><%= link_to "Brittmark", root_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "All Bookmarks", bookmarks_path %></li>
+        <li><%= link_to "My Bookmarks", mybookmarks_path %></li>
+      <% else %>
+        <ul class="nav nav-tabs">
+          <li><%= link_to "Brittmark", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+      <% end %>
       </ul>
 
     <div class="pull-right user-info">
