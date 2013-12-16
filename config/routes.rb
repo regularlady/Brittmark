@@ -6,8 +6,6 @@ Brittmark::Application.routes.draw do
 
   resources :bookmarks
 
-  resources :users
-
   match "about" => 'welcome#about', via: :get
 
   match "mybookmarks" => 'bookmarks#mybookmarks', via: :get
