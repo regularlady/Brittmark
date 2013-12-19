@@ -59,8 +59,12 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    griddler (0.6.1)
+      htmlentities
+      rails (>= 3.2.0)
     hashie (2.0.5)
     hike (1.2.3)
+    htmlentities (4.3.1)
     httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
@@ -155,6 +159,7 @@ DEPENDENCIES
   devise
   faker
   figaro
+  griddler
   jquery-rails
   omniauth-facebook
   pg

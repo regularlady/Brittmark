@@ -10,12 +10,8 @@ require 'will_paginate/array'
     end
   end
 
-  def show
-    @bookmark = Bookmark.find(params[:id])
-  end
-
-
   def new
+    # @bookmark = current_user.bookmarks.new
     @bookmark = Bookmark.new
     authorize! :create, @bookmark, message: "You need to be a member to create a new bookmark."
   end
@@ -32,23 +28,6 @@ require 'will_paginate/array'
     render :new
   end
 end
-
-  def edit
-    @bookmark = Bookmark.find(params[:id])
-    authorize! :edit, @bookmark, message: "You need to own the bookmark to edit it."
-  end
-
-  def update
-    @bookmark = Bookmark.find(params[:id])
-    authorize! :update, @bookmark, message: "You need to own the bookmark to edit it."
-    if @bookmark.update_attributes(params[:bookmark])
-      flash[:notice] = "Bookmark was updated."
-      redirect_to @bookmark
-    else
-      flash[:error] = "There was an error saving the bookmark. Please try again."
-      render :edit
-    end
-  end
 
   def mybookmarks 
     if params[:tag]
