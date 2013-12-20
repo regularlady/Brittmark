@@ -6,7 +6,7 @@ if Rails.env.production?
     :authentication => :plain,
     :user_name      => ENV["app19964849@heroku.com"],
     :password       => ENV["gxkgvxqt"],
-    :domain         => 'brittmark.co',
+    :domain         => 'www.brittmark.co',
     :enable_starttls_auto => true
   }
 end
