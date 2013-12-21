@@ -1,5 +1,5 @@
 class EmailProcessor
   def self.process(email)
-    Bookmark.create!({ burl: email.body, title: email.from })
+    Bookmark.create!({ tag_list: email.body, burl: email.subject })
   end
 end
