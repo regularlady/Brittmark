@@ -1,0 +1,13 @@
+<% if can? :create, Like %>
+  <div class="like">
+    <% if like = current_user.liked(bookmark) %>
+      <%= link_to [bookmark, like], class: 'btn btn-small', method: :delete do %>
+        <i class="icon-star-empty"> </i>&nbsp; Unlike
+      <% end %>
+    <% else %>
+      <%= link_to [bookmark, Like.new], class: 'btn btn-small', method: :bookmark do %>
+        <i class="icon-star"> </i>&nbsp; Like
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

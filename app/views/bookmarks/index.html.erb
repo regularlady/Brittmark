@@ -18,6 +18,7 @@
       <small>
         Tags: <%= raw bookmark.tag_list.map { |t| link_to "##{t}", tag_path(t) }.join(', ') %>
       </small>
+        <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
     </div>
   </div>
 <% end %>

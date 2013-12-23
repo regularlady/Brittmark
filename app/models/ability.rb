@@ -8,6 +8,7 @@ class Ability
     # (or create new ones)
     if user.role? :member
       can :manage, Bookmark
+      can :manage, Like, user_id: user.id
     end
 
     # Moderators can delete any post

@@ -3,6 +3,7 @@ class Bookmark < ActiveRecord::Base
   acts_as_taggable
   has_many :users, through: :user_bookmarks
   has_many :user_bookmarks
+  has_many :likes, dependent: :destroy
 
   default_scope order('created_at DESC')
 

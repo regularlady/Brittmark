@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :provider, :uid
   has_many :user_bookmarks
   has_many :bookmarks, through: :user_bookmarks
+  has_many :likes, dependent: :destroy
   before_create :set_member
   # attr_accessible :title, :body
 
@@ -32,6 +33,10 @@ class User < ActiveRecord::Base
   def role?(base_role)
     role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
   end 
+
+  def liked(bookmark)
+    self.likes.where(bookmark_id: bookmark.id).first
+  end
 
   private
 
