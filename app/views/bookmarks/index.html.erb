@@ -13,12 +13,15 @@
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
-        <%= link_to bookmark.burl, bookmark %>
+
+         <!-- might need to add some fancy parsing here -->
+         
+        <%= link_to bookmark.burl, "http://#{bookmark.burl}" %>
       </h4>
       <small>
         Tags: <%= raw bookmark.tag_list.map { |t| link_to "##{t}", tag_path(t) }.join(', ') %>
       </small>
-        <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
     </div>
   </div>
 <% end %>

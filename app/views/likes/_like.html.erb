@@ -5,8 +5,10 @@
         <i class="icon-star-empty"> </i>&nbsp; Unlike
       <% end %>
     <% else %>
-      <%= link_to [bookmark, Like.new], class: 'btn btn-small', method: :bookmark do %>
-        <i class="icon-star"> </i>&nbsp; Like
+      <%= form_for [bookmark, Like.new] do |f| %>
+        <%= button_tag type: 'submit', class: 'btn btn-small' do %>
+          <i class="icon-star"> </i>&nbsp; Like
+        <% end %>
       <% end %>
     <% end %>
   </div>
