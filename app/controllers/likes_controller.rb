@@ -7,6 +7,7 @@ class LikesController < ApplicationController
     if like.valid?
       flash[:notice] = "Liked bookmark"
       redirect_to bookmarks_path
+      UserBookmark.create(user_id: current_user.id, bookmark_id: @bookmark.id)
     else
       flash[:error] = "Unable to like. Please try again."
       redirect_to bookmarks_path
@@ -20,10 +21,10 @@ class LikesController < ApplicationController
 
   if @like.destroy
     flash[:notice] = "Unliked"
-    redirect_to [@bookmark]
+    redirect_to bookmarks_path
   else
     flash[:error] = "Unable to remove like. Please try again."
-    redirect_to [@bookmark]
+    redirect_to bookmarks_path
   end
 end
 

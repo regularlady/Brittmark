@@ -3,21 +3,7 @@
   <%= link_to "New Bookmark", new_bookmark_path, class: 'btn btn-primary btn-mini' %>
 <% end %>
 
-<a class='btn btn-primary btn-mini' data-toggle="modal" href="#myModal">Add More Bookmarks</a>
-
-
-<div class="modal hide" id="myModal">
-  <div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
-    <h3>How to Add More Bookmarks</h3>
-  </div>
-  <div class="modal-body">
-    <p>Email your bookmark (subject of the email is the bookmark, tags separated by commas in the body</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
-  </div>
-</div>​
+<a class='btn btn-primary btn-mini' data-toggle="modal" href="#myModal">How to Email Bookmarks</a>
 
 <div id="tag_cloud", style="float: right;">
   <% tag_cloud Bookmark.tag_counts, %w[s m l] do |tag, css_class| %>
@@ -30,18 +16,16 @@
     <div class="media-body">
       <h4 class="media-heading">
 
-         <!-- might need to add some fancy parsing here -->
-         
+         <!-- might need to add some fancy parsing here --> 
         <%= link_to bookmark.burl, "http://#{bookmark.burl}" %>
       </h4>
       <small>
         Tags: <%= raw bookmark.tag_list.map { |t| link_to "##{t}", tag_path(t) }.join(', ') %>
       </small>
-        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+        <℅ if Userbookmark.userid != current_user.id %>
+          <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+        <℅ end %>
     </div>
   </div>
 <% end %>
 <%= will_paginate @bookmarks %>
-
-
-

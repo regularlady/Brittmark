@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  respond_to :html, :js
 
 require 'will_paginate/array'
 
@@ -22,7 +23,7 @@ require 'will_paginate/array'
   if @bookmark.save
     UserBookmark.create(user_id: current_user.id, bookmark_id: @bookmark.id)
     flash[:notice] = "Bookmark was saved."
-    redirect_to @bookmark
+    redirect_to bookmarks_path
   else
     flash[:error] = "There was an error saving the bookmark. Please try again."
     render :new
@@ -38,15 +39,14 @@ end
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:id])
-    name = @bookmark.name
-     authorize! :destroy, @bookmark, message: "You need to own the bookmark to delete it."
+    @bookmark = Bookmark.find(params[:bookmark_id])
+    authorize! :destroy, @bookmark, message: "You need to own the bookmark to delete it."
+
     if @bookmark.destroy
-      flash[:notice] = "\"#{name}\" was deleted successfully."
-      redirect_to bookmarks_path
+      flash[:notice] = "Bookmark was removed."
     else
-      flash[:error] = "There was an error deleting the bookmark."
-      render :show
+      flash[:error] = "Bookmark couldn't be deleted. Try again."
     end
+    redirect_to bookmarks_path
   end
 end
