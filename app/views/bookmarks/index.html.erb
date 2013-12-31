@@ -3,6 +3,22 @@
   <%= link_to "New Bookmark", new_bookmark_path, class: 'btn btn-primary btn-mini' %>
 <% end %>
 
+<a class='btn btn-primary btn-mini' data-toggle="modal" href="#myModal">Add More Bookmarks</a>
+
+
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>How to Add More Bookmarks</h3>
+  </div>
+  <div class="modal-body">
+    <p>Email your bookmark (subject of the email is the bookmark, tags separated by commas in the body</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>​
+
 <div id="tag_cloud", style="float: right;">
   <% tag_cloud Bookmark.tag_counts, %w[s m l] do |tag, css_class| %>
     <%= link_to "##{tag.name}", tag_path(tag.name), class: css_class %>
