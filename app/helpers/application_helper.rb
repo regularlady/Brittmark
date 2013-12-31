@@ -16,4 +16,12 @@ module ApplicationHelper
     end
     super *[collection_or_options, options].compact
   end
+
+  def embedly_url(url)
+    embedly_api = Embedly::API.new :key => ENV['EMBEDLY_KEY'], :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
+
+    obj = embedly_api.preview :url => url
+    #jason_obj = JSON.pretty_generate(obj[0].marshal_dump)
+    #jason_obj
+  end
 end

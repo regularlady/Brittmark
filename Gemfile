@@ -36,6 +36,7 @@ gem 'acts-as-taggable-on'
 gem 'will_paginate', '~> 3.0'
 gem 'omniauth-facebook'
 gem 'griddler'
+gem 'embedly'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

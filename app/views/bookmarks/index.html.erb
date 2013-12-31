@@ -17,14 +17,16 @@
       <h4 class="media-heading">
 
          <!-- might need to add some fancy parsing here --> 
-        <%= link_to bookmark.burl, "http://#{bookmark.burl}" %>
+        <%# link_to bookmark.burl, "http://#{bookmark.burl}" %>
+        <%= embedly_url(bookmark.burl) %>
       </h4>
       <small>
         Tags: <%= raw bookmark.tag_list.map { |t| link_to "##{t}", tag_path(t) }.join(', ') %>
       </small>
-        <℅ if Userbookmark.userid != current_user.id %>
+      <!-- need to repair so that current user cannot like their own bookmarks --> 
+      <!--   <℅# if bookmark.user_bookmark.user != current_user.id %>
           <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-        <℅ end %>
+        <℅# end %> --> 
     </div>
   </div>
 <% end %>
