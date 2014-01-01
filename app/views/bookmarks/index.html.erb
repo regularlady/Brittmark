@@ -24,9 +24,7 @@
         Tags: <%= raw bookmark.tag_list.map { |t| link_to "##{t}", tag_path(t) }.join(', ') %>
       </small>
       <!-- need to repair so that current user cannot like their own bookmarks --> 
-      <!--   <℅# if bookmark.user_bookmark.user != current_user.id %>
           <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
-        <℅# end %> --> 
     </div>
   </div>
 <% end %>
