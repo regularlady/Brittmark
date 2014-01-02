@@ -18,7 +18,7 @@
 
          <!-- might need to add some fancy parsing here --> 
         <%# link_to bookmark.burl, "http://#{bookmark.burl}" %>
-        <%= embedly_url(bookmark.burl) %>
+        <%# embedly_url(bookmark.burl) %>
       </h4>
       <small>
         Tags: <%= raw bookmark.tag_list.map { |t| link_to "##{t}", tag_path(t) }.join(', ') %>

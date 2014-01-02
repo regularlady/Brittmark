@@ -39,7 +39,7 @@ end
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:bookmark_id])
+    @bookmark = Bookmark.find(params[:id])
     authorize! :destroy, @bookmark, message: "You need to own the bookmark to delete it."
 
     if @bookmark.destroy
