@@ -16,5 +16,9 @@ Brittmark::Application.routes.draw do
 
   root :to => 'welcome#index'
 
+  authenticated :user do
+    root to: 'bookmarks#mybookmarks'
+  end 
+
   get 'tags/:tag', to: 'bookmarks#index', as: :tag
 end
