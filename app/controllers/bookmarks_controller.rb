@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   respond_to :html, :js
 
 require 'will_paginate/array'
-
+  before_filter :authenticate_user!, :only => [:mybookmarks]
   def index
     if params[:tag]
       @bookmarks = Bookmark.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
@@ -18,17 +18,17 @@ require 'will_paginate/array'
   end
 
   def create
-  @bookmark = Bookmark.new(params[:bookmark])
-  
-  if @bookmark.save
-    UserBookmark.create(user_id: current_user.id, bookmark_id: @bookmark.id)
-    flash[:notice] = "Bookmark was saved."
-    redirect_to bookmarks_path
-  else
-    flash[:error] = "There was an error saving the bookmark. Please try again."
-    render :new
+    @bookmark = Bookmark.new(params[:bookmark])
+    
+    if @bookmark.save
+      UserBookmark.create(user_id: current_user.id, bookmark_id: @bookmark.id)
+      flash[:notice] = "Bookmark was saved."
+      redirect_to bookmarks_path
+    else
+      flash[:error] = "There was an error saving the bookmark. Please try again."
+      render :new
+    end
   end
-end
 
   def mybookmarks 
     if params[:tag]

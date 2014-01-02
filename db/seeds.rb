@@ -17,8 +17,8 @@ rand(4..10).times do
 
   rand(5..12).times do
     p = u.bookmarks.create(
-      title: Faker::Lorem.words(rand(1..10)).join(" "), 
-      burl: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
+      title: Faker::Company.name, 
+      burl: Faker::Internet.domain_name)
     # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
 
@@ -27,7 +27,7 @@ end
 
 u = User.first
 u.skip_reconfirmation!
-u.update_attributes(email: 'brittany.jill.martin@gmail.com', password: 'helloworld', password_confirmation: 'helloworld')
+u.update_attributes(name: 'Brittany Martin', email: 'brittany.jill.martin@gmail.com', password: 'helloworld', password_confirmation: 'helloworld')
 
 puts "Seed finished"
 puts "#{User.count} users created"
