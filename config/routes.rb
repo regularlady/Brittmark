@@ -16,7 +16,7 @@ Brittmark::Application.routes.draw do
 
   root :to => 'welcome#index'
 
-  authenticated :user do
+  authenticate :user do
     root to: 'bookmarks#mybookmarks'
   end 
 
