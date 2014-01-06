@@ -20,8 +20,8 @@ module ApplicationHelper
   def embedly_url(url)
     embedly_api = Embedly::API.new :key => ENV['EMBEDLY_KEY'], :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
 
-    obj = embedly_api.preview :url => url
-    #jason_obj = JSON.pretty_generate(obj[0].marshal_dump)
-    #jason_obj
+    obj = embedly_api.oembed :url => url
+    image_tag(obj[0]["thumbnail_url"])
+   
   end
 end
