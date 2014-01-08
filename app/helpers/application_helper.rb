@@ -21,7 +21,7 @@ module ApplicationHelper
     embedly_api = Embedly::API.new :key => ENV['EMBEDLY_KEY'], :user_agent => 'Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)'
 
     obj = embedly_api.oembed :url => url
-    image_tag(obj[0]["thumbnail_url"])
+    image_tag(obj[0]["thumbnail_url"], size: "160x100")
    
   end
 end
