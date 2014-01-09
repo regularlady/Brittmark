@@ -14,6 +14,3 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-
-<script src="jquery.tagsinput.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery.tagsinput.css" />
